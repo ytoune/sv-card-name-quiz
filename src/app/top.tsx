@@ -35,6 +35,10 @@ export const Top = () => {
 						)
 							.slice(0, 10)
 							.map(card => ({ card, guess: '' }))
+						if (cards.length < 1) {
+							alert('カードが見つかりません')
+							return s
+						}
 						return {
 							...s,
 							route: {
