@@ -53,11 +53,11 @@ export const Top = () => {
 			>
 				開始
 			</button>
-			<p>
+			<p style={{ userSelect: 'none' }}>
 				クラス:
 				<br />
 				{Object.entries(clanMap).map(([val, name]) => (
-					<label style={{ userSelect: 'none' }}>
+					<label>
 						<input
 							type="checkbox"
 							name="clans"
@@ -82,7 +82,7 @@ export const Top = () => {
 					</label>
 				))}
 			</p>
-			<p>
+			<p style={{ userSelect: 'none' }}>
 				カードパック:
 				<br />
 				<select
@@ -109,6 +109,26 @@ export const Top = () => {
 						</option>
 					))}
 				</select>
+			</p>
+			<hr />
+			<p style={{ fontSize: '80%' }}>
+				カードパックは control + クリック などで複数選べます
+			</p>
+			<hr />
+			<p style={{ fontSize: '80%' }}>
+				<ul>
+					<li>公式に怒られたら消えます</li>
+					<li>
+						{'発想元: '}
+						<a
+							href="https://www.youtube.com/watch?v=wztaRe0Hpjc"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							ダヤンさんの動画
+						</a>
+					</li>
+				</ul>
 			</p>
 		</div>
 	)

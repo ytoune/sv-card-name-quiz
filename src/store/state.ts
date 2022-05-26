@@ -36,14 +36,16 @@ export type State = Readonly<{
 
 export const initState = (): State => {
 	const cards = getList().filter(c => c.name)
-	const setId = Math.max(
-		...cardSets.filter(s => s[1] < 70000).map(s => s[1]),
-	) as CardSetId
-
+	const setIds = cardSets
+		.filter(s => s[1] < 70000)
+		.map(s => s[1])
+		.sort((q, w) => w - q)
+		.slice(0, 5)
+	if (!setIds.includes(10000)) setIds.push(10000)
 	return {
 		cards,
 		route: { is: 'top' },
-		settings: { clans: [0, 1, 2, 3, 4, 5, 6, 7, 8], cardSets: [setId] },
+		settings: { clans: [0, 1, 2, 3, 4, 5, 6, 7, 8], cardSets: setIds },
 		history: [],
 	}
 }
