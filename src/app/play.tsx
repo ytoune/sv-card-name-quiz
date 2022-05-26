@@ -8,7 +8,7 @@ export const Play = ({ route }: { route: PlayRoute }) => {
 	const card = route.game.cards[route.current]!
 	const [g, set] = useState(card.guess)
 	const progressNum = Math.floor(
-		(route.current / route.game.cards.length) * 100,
+		(route.current / route.game.cards.length) * 100 + 5,
 	)
 	return (
 		<div>
