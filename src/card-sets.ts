@@ -9,6 +9,7 @@ tmp.map(t => [t.textContent.trim(), t.querySelector("[value]")?.value|0])
 export type CardSetId = typeof cardSets[number][1] | 90000
 
 export const cardSets = [
+	['極天竜鳴', 10025],
 	['天象の楽土', 10024],
 	['十禍闘争', 10023],
 	['災禍を超えし者', 10022],

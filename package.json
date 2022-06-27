@@ -13,6 +13,7 @@
 	"scripts": {
 		"build": "rimraf dist && cp -r statics dist && NODE_ENV=production npm run ts-node scripts/build.ts",
 		"dev": "rimraf dist && cp -r statics dist && NODE_ENV=development npm run ts-node scripts/build.ts",
+		"codegen": "rimraf data src/gen && npm run ts-node scripts/fetch-cards && npm run ts-node scripts/gen-cards",
 		"test": "eslint '**/*.{ts,tsx}' && tsc --noEmit && jest --passWithNoTests",
 		"ts-node": "node -r esbuild-register"
 	},
