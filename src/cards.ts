@@ -1,5 +1,6 @@
 import type { CardSetId } from './card-sets'
 import { list } from './gen/cards'
+export { fetched } from './gen/cards'
 
 /** 1 = Follower, 2 = Amulet, 3 = Countdown Amulet, 4 = Spell */
 export type CardType = 1 | 2 | 3 | 4

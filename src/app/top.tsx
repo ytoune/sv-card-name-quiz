@@ -1,7 +1,7 @@
 import { useAppStore, useAppStoreUpdate } from '../store/ctx'
 
 import { CardSetId, cardSets } from '~/card-sets'
-import { Clan, clanMap } from '~/cards'
+import { Clan, clanMap, fetched } from '~/cards'
 
 const shuffle = <T,>([...array]: readonly T[]): T[] => {
 	for (let i = array.length - 1; i >= 0; i--) {
@@ -128,7 +128,7 @@ export const Top = () => {
 							ダヤンさんの動画
 						</a>
 					</li>
-					<li>最終更新日: 2023/01/04</li>
+					<li>最終更新日: {fetched}</li>
 				</ul>
 			</p>
 		</div>

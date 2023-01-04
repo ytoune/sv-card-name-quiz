@@ -1,7 +1,11 @@
 import fetch from 'cross-fetch'
+import dayjs from 'dayjs'
 import { mkdir, writeFile } from 'fs/promises'
 import { join } from 'path'
+// eslint-disable-next-line import/no-unassigned-import
+import 'dayjs/locale/ja'
 ;(async () => {
+	dayjs.locale('ja')
 	const r = await fetch(
 		'https://shadowverse-portal.com/api/v1/cards?format=json&lang=ja',
 		{
@@ -27,7 +31,9 @@ import { join } from 'path'
 		[
 			'// @ts-nocheck',
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-			'export default ' + (await r.text()) + ' as const',
+			'export const info = ' + (await r.text()) + ' as const',
+			'export const fetched = ' + JSON.stringify(dayjs().format('YYYY/MM/DD')),
+			'export default info',
 		]
 			.map(t => t + '\n')
 			.join(''),

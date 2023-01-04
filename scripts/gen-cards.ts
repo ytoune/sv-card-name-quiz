@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'fs/promises'
 import { join } from 'path'
 
-import info from '../data/cards'
+import { fetched, info } from '../data/cards'
 
 import type { Card } from '~/cards'
 ;(async () => {
@@ -23,6 +23,7 @@ import type { Card } from '~/cards'
 		[
 			'// @ts-nocheck',
 			'export const list = ' + JSON.stringify(cards) + ' as const',
+			'export const fetched = ' + JSON.stringify(fetched),
 		]
 			.map(t => t + '\n')
 			.join(''),
