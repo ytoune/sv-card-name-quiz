@@ -1,3 +1,6 @@
+/**
+ * https://shadowverse-portal.com/cards?format=1&lang=ja
+ */
 /*
 tmp = [...document.querySelectorAll(".cards-cardset-box label")];
 console.log(JSON.stringify(
@@ -9,6 +12,8 @@ tmp.map(t => [t.textContent.trim(), t.querySelector("[value]")?.value|0])
 export type CardSetId = typeof cardSets[number][1] | 90000
 
 export const cardSets = [
+	['八獄魔境アズヴォルト', 10027],
+	['天示す竜剣', 10026],
 	['極天竜鳴', 10025],
 	['天象の楽土', 10024],
 	['十禍闘争', 10023],
@@ -58,4 +63,6 @@ export const cardSets = [
 	['アイドルマスター シンデレラガールズコラボ', 70023],
 	['SHAMAN KINGコラボ', 70024],
 	['ウマ娘 プリティーダービーコラボ', 70025],
+	['ちいかわコラボ', 70026],
+	['シャドウバースＦコラボ', 70027],
 ] as const
