@@ -17,7 +17,10 @@ import { join } from 'path'
 			},
 		},
 	)
-	console.log(r)
+	if (300 <= r.status) {
+		console.log(r)
+		throw new Error(`http error: ${r.statusText}`)
+	}
 	await mkdir(join(__dirname, '../data'), { recursive: true })
 	await writeFile(
 		join(__dirname, '../data/cards.ts'),
