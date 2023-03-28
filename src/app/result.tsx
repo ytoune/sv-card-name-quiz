@@ -1,5 +1,25 @@
+import type { Card } from '~/cards'
 import { useAppStoreUpdate } from '~/store/ctx'
 import type { ResultRoute } from '~/store/state'
+
+const Line = ({ card, guess }: { card: Card; guess: string }) => {
+	const ok = card.name === guess
+	const badHasGuess = !ok && guess
+	return (
+		<li key={card.id} className={'answers ' + (ok ? 'ok' : 'bad')}>
+			<span className="mark">{ok ? '◎' : '×'}</span>
+			{badHasGuess ? <span className="guess">{guess}</span> : null}
+			<span className={'name' + (badHasGuess ? ' small' : '')}>
+				{card.name}
+			</span>
+			<p className="card">
+				<img
+					src={`https://shadowverse-portal.com/image/card/phase2/common/C/C_${card.id}.png`}
+				/>
+			</p>
+		</li>
+	)
+}
 
 export const Result = ({ route }: { route: ResultRoute }) => {
 	const update = useAppStoreUpdate()
@@ -7,18 +27,12 @@ export const Result = ({ route }: { route: ResultRoute }) => {
 	for (const c of route.game.cards) if (c.card.name === c.guess) score += 1
 	return (
 		<div>
-			<p>
+			<p className="result-title">
 				{route.game.cards.length} 問中 {score} 問正解
 			</p>
 			<ul>
 				{route.game.cards.map(c => (
-					<li key={c.card.id}>
-						<span style={{ fontWeight: 'bold', marginRight: '.5em' }}>
-							{c.card.name === c.guess ? '◎' : '×'}
-						</span>
-						<span style={{ marginRight: '.5em' }}>{c.card.name}</span>
-						<span>{c.guess}</span>
-					</li>
+					<Line key={c.card.id} card={c.card} guess={c.guess} />
 				))}
 			</ul>
 			<p>

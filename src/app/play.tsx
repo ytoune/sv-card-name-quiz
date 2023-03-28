@@ -12,10 +12,9 @@ export const Play = ({ route }: { route: PlayRoute }) => {
 	)
 	return (
 		<div>
-			<p>
+			<p className="card">
 				<img
 					src={`https://shadowverse-portal.com/image/card/phase2/common/C/C_${card.card.id}.png`}
-					style={{ maxHeight: '60vh' }}
 				/>
 			</p>
 			<form
@@ -44,13 +43,14 @@ export const Play = ({ route }: { route: PlayRoute }) => {
 				<p>
 					<input
 						type="text"
+						placeholder="カード名を入力してください"
 						value={g}
 						onInput={e => {
 							if (e.target instanceof HTMLInputElement) set(e.target.value)
 						}}
 					/>
 				</p>
-				<button type="submit">next</button>
+				<button type="submit">次の問題に行く</button>
 			</form>
 			<p>
 				<progress max="100" value={progressNum}>
