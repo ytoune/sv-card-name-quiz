@@ -12,6 +12,7 @@ tmp.map(t => [t.textContent.trim(), t.querySelector("[value]")?.value|0])
 export type CardSetId = typeof cardSets[number][1] | 90000
 
 export const cardSets = [
+	['ミスタルシアの英雄', 10029],
 	['遥かなる学園', 10028],
 	['八獄魔境アズヴォルト', 10027],
 	['天示す竜剣', 10026],
@@ -67,4 +68,5 @@ export const cardSets = [
 	['ちいかわコラボ', 70026],
 	['シャドウバースＦコラボ', 70027],
 	['初音ミクコラボ', 70028],
+	['サンリオキャラクターズコラボ', 70029],
 ] as const
