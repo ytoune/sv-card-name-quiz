@@ -3,6 +3,7 @@
 /.cache
 /.next
 /.swc
+/.yarn
 /scripts/sandbox**
 /yarn-error.log*
 /data

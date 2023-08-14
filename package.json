@@ -17,7 +17,6 @@
 		"test": "eslint '**/*.{ts,tsx}' && tsc --noEmit && jest --passWithNoTests",
 		"ts-node": "node -r esbuild-register"
 	},
-	"dependencies": {},
 	"devDependencies": {
 		"@herp-inc/eslint-config": "0.18.0",
 		"@swc/core": "1.2.194",
