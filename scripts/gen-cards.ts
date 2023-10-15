@@ -42,8 +42,18 @@ const getCardSetId = (c: FetchedCard): FetchedCardSetId => {
 		join(__dirname, '../src/gen/cards.ts'),
 		[
 			'// @ts-nocheck',
-			'export const list = ' + JSON.stringify(cards) + ' as const',
-			'export const sets = ' + JSON.stringify(sets) + ' as const',
+			'export const list = ' +
+				JSON.stringify(cards)
+					.replace(/\},\{/g, '},\n{')
+					.replace(/^\[\{/, '[\n{')
+					.replace(/\}\]$/, '},\n]') +
+				' as const',
+			'export const sets = ' +
+				JSON.stringify(sets)
+					.replace(/\],\[/g, '],\n[')
+					.replace(/^\[\[/, '[\n[')
+					.replace(/\]\]$/, '],\n]') +
+				' as const',
 			'export const fetched = ' + JSON.stringify(min),
 		]
 			.map(t => t + '\n')
