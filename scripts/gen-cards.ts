@@ -1,14 +1,31 @@
-import { mkdir, writeFile } from 'fs/promises'
-import { join } from 'path'
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { mkdir, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
-import { fetched, info } from '../data/cards'
+import * as fetchedCards from '../data/cards'
+import * as fetchedSets from '../data/sets'
 
 import type { Card } from '~/cards'
+
+type FetchedCard = typeof fetchedCards['info']['data']['cards'][number]
+type FetchedCardSetId = typeof fetchedSets['info'][number][1] | 90000
+
+const getCardSetId = (c: FetchedCard): FetchedCardSetId => {
+	if ('初音ミク' === c.card_name) return 70028
+	if ('ボンド・フォージャー' === c.card_name) return 70030
+	if ('アーニャ・フォージャー' === c.card_name) return 70030
+	if ('ロイド・フォージャー' === c.card_name) return 70030
+	if ('ヨル・フォージャー' === c.card_name) return 70030
+	return c.card_set_id
+}
 ;(async () => {
-	const cards: Card[] = info.data.cards.map(
+	const sets = fetchedSets.info
+	const cards: Card[] = fetchedCards.info.data.cards.map(
 		(c): Card => ({
 			id: c.card_id,
-			cardSet: c.card_set_id,
+			cardSet: getCardSetId(c),
 			name: c.card_name,
 			type: c.char_type,
 			tribeName: c.tribe_name,
@@ -17,13 +34,17 @@ import type { Card } from '~/cards'
 			cv: c.cv,
 		}),
 	)
+	const min = [fetchedCards.fetched, fetchedSets.fetched].sort((q, w) =>
+		q.localeCompare(w),
+	)[0]
 	await mkdir(join(__dirname, '../src/gen'), { recursive: true })
 	await writeFile(
 		join(__dirname, '../src/gen/cards.ts'),
 		[
 			'// @ts-nocheck',
 			'export const list = ' + JSON.stringify(cards) + ' as const',
-			'export const fetched = ' + JSON.stringify(fetched),
+			'export const sets = ' + JSON.stringify(sets) + ' as const',
+			'export const fetched = ' + JSON.stringify(min),
 		]
 			.map(t => t + '\n')
 			.join(''),
