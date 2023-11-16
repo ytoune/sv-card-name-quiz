@@ -6,7 +6,7 @@
 		"name": "ytoune"
 	},
 	"engines": {
-		"node": ">= 16"
+		"node": ">= 20"
 	},
 	"volta": {
 		"node": "20.9.0",
