@@ -10,7 +10,6 @@
 		"noImplicitThis": true,
 		"noImplicitAny": true,
 		"noUncheckedIndexedAccess": true,
-		"importsNotUsedAsValues": "error",
 		"useDefineForClassFields": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,

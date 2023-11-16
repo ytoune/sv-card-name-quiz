@@ -9,8 +9,8 @@ import * as fetchedSets from '../data/sets'
 
 import type { Card } from '~/cards'
 
-type FetchedCard = typeof fetchedCards['info']['data']['cards'][number]
-type FetchedCardSetId = typeof fetchedSets['info'][number][1] | 90000
+type FetchedCard = (typeof fetchedCards)['info']['data']['cards'][number]
+type FetchedCardSetId = (typeof fetchedSets)['info'][number][1] | 90000
 
 const getCardSetId = (c: FetchedCard): FetchedCardSetId => {
 	if ('初音ミク' === c.card_name) return 70028

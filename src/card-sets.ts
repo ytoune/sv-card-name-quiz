@@ -11,6 +11,6 @@ tmp.map(t => [t.textContent.trim(), t.querySelector("[value]")?.value|0])
  */
 
 /** カードセット, 90000 はトークン */
-export type CardSetId = typeof cardSets[number][1] | 90000
+export type CardSetId = (typeof cardSets)[number][1] | 90000
 
 export { cardSets }
