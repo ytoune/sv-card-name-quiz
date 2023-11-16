@@ -21,19 +21,21 @@ const getCardSetId = (c: FetchedCard): FetchedCardSetId => {
 	return c.card_set_id
 }
 ;(async () => {
-	const sets = fetchedSets.info
-	const cards: Card[] = fetchedCards.info.data.cards.map(
-		(c): Card => ({
-			id: c.card_id,
-			cardSet: getCardSetId(c),
-			name: c.card_name,
-			type: c.char_type,
-			tribeName: c.tribe_name,
-			clan: c.clan,
-			rarity: c.rarity,
-			cv: c.cv,
-		}),
-	)
+	const sets = fetchedSets.info.slice().sort((q, w) => q[1] - w[1])
+	const cards: Card[] = fetchedCards.info.data.cards
+		.map(
+			(c): Card => ({
+				id: c.card_id,
+				cardSet: getCardSetId(c),
+				name: c.card_name,
+				type: c.char_type,
+				tribeName: c.tribe_name,
+				clan: c.clan,
+				rarity: c.rarity,
+				cv: c.cv,
+			}),
+		)
+		.sort((q, w) => q.id - w.id)
 	const min = [fetchedCards.fetched, fetchedSets.fetched].sort((q, w) =>
 		q.localeCompare(w),
 	)[0]
