@@ -11,9 +11,9 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"build": "rimraf dist && cross-env NODE_ENV=production npm run ts-node scripts/build.ts",
-		"dev": "rimraf dist && cross-env NODE_ENV=development npm run ts-node scripts/build.ts",
-		"codegen": "rimraf data src/gen && npm run ts-node scripts/fetch-cards && npm run ts-node scripts/fetch-sets && npm run ts-node scripts/gen-cards",
+		"build": "rimraf dist && cross-env NODE_ENV=production yarn ts-node scripts/build",
+		"dev": "rimraf dist && cross-env NODE_ENV=development yarn ts-node scripts/build",
+		"codegen": "rimraf data src/gen && yarn ts-node scripts/fetch-cards && yarn ts-node scripts/fetch-sets && yarn ts-node scripts/gen-cards",
 		"test": "eslint && tsc --noEmit && jest --passWithNoTests",
 		"ts-node": "node -r esbuild-register"
 	},
