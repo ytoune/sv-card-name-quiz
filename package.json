@@ -6,11 +6,11 @@
 		"name": "ytoune"
 	},
 	"engines": {
-		"node": ">= 20"
+		"node": ">= 18"
 	},
 	"packageManager": "yarn@1.22.21",
 	"volta": {
-		"node": "20.9.0",
+		"node": "18.18.2",
 		"yarn": "1.22.21"
 	},
 	"license": "MIT",
