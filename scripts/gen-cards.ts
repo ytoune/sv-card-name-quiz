@@ -21,7 +21,7 @@ const getCardSetId = (c: FetchedCard): FetchedCardSetId => {
 	return c.card_set_id
 }
 ;(async () => {
-	const sets = fetchedSets.info.slice().sort((q, w) => q[1] - w[1])
+	const sets = fetchedSets.info //.slice().sort((q, w) => q[1] - w[1])
 	const cards: Card[] = fetchedCards.info.data.cards
 		.map(
 			(c): Card => ({
