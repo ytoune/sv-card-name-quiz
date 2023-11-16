@@ -36,3 +36,11 @@ overrides:
   - files: ['*.ts', '*.tsx']
     rules:
       '@typescript-eslint/no-var-requires': error
+ignorePatterns:
+  - /node_modules
+  - /data
+  - /dist
+  - /.cache
+  - /.swc
+  - /scripts/sandbox*
+  - /src/gen

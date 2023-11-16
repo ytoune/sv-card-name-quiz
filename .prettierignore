@@ -1,7 +1,7 @@
 /node_modules
 /data
 /dist
+/.yarn
 /.cache
 /.swc
-/scripts/sandbox*
 /src/gen
