@@ -4969,4 +4969,4 @@ export const sets = [
 ["サンリオキャラクターズコラボ",70029],
 ["SPY×FAMILYコラボ",70030],
 ] as const
-export const fetched = "2023/11/16"
+export const fetched = "2023/12/23"
