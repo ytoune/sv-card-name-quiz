@@ -2,6 +2,7 @@ import { useState } from 'preact/hooks'
 
 import { useAppStoreUpdate } from '~/store/ctx'
 import type { PlayRoute } from '~/store/state'
+import { Card } from './comps/card'
 
 export const Play = ({ route }: { route: PlayRoute }) => {
   const update = useAppStoreUpdate()
@@ -12,11 +13,7 @@ export const Play = ({ route }: { route: PlayRoute }) => {
   )
   return (
     <div>
-      <p className="card">
-        <img
-          src={`https://shadowverse-portal.com/image/card/phase2/common/C/C_${card.card.id}.png`}
-        />
-      </p>
+      <Card key={card.card.id} card={card.card} />
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -45,7 +42,7 @@ export const Play = ({ route }: { route: PlayRoute }) => {
             type="text"
             placeholder="カード名を入力してください"
             value={g}
-            onInput={e => {
+            onChange={(e: { target: unknown }) => {
               if (e.target instanceof HTMLInputElement) set(e.target.value)
             }}
           />

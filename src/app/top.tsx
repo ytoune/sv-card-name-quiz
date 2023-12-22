@@ -53,7 +53,7 @@ export const Top = () => {
       >
         開始
       </button>
-      <p style={{ userSelect: 'none' }}>
+      <p class="tools">
         クラス:
         <br />
         {Object.entries(clanMap).map(([val, name]) => (
@@ -62,7 +62,7 @@ export const Top = () => {
               type="checkbox"
               name="clans"
               checked={selectedClans.has(Number(val) as Clan)}
-              onChange={e => {
+              onChange={(e: { target: unknown }) => {
                 if (e.target instanceof HTMLInputElement) {
                   const checked = e.target.checked
                   update(s => {
@@ -82,7 +82,7 @@ export const Top = () => {
           </label>
         ))}
       </p>
-      <p style={{ userSelect: 'none' }}>
+      <p class="tools">
         カードパック:
         <br />
         <select

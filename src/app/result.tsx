@@ -1,8 +1,9 @@
-import type { Card } from '~/cards'
+import type { Card as ICard } from '~/cards'
 import { useAppStoreUpdate } from '~/store/ctx'
 import type { ResultRoute } from '~/store/state'
+import { Card } from './comps/card'
 
-const Line = ({ card, guess }: { card: Card; guess: string }) => {
+const Line = ({ card, guess }: { card: ICard; guess: string }) => {
   const ok = card.name === guess
   const badHasGuess = !ok && guess
   return (
@@ -12,11 +13,7 @@ const Line = ({ card, guess }: { card: Card; guess: string }) => {
       <span className={'name' + (badHasGuess ? ' small' : '')}>
         {card.name}
       </span>
-      <p className="card">
-        <img
-          src={`https://shadowverse-portal.com/image/card/phase2/common/C/C_${card.id}.png`}
-        />
-      </p>
+      <Card key={card.id} card={card} />
     </li>
   )
 }
