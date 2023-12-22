@@ -22,7 +22,13 @@
     "test": "prettier -c . && eslint && tsc --noEmit && vitest run --passWithNoTests",
     "ts-node": "node -r esbuild-register"
   },
-  "dependencies": {},
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.300.0",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
   "devDependencies": {
     "@preact/preset-vite": "^2.7.0",
     "@types/jest": "^29.5.8",
@@ -58,11 +64,16 @@
   },
   "eslintConfig": {
     "ignorePatterns": [
-      "/node_modules",
-      "/dist",
       "/.cache",
       "/.swc",
-      "/scripts/sandbox*"
+      "/.yarn",
+      "/data",
+      "/dist",
+      "/node_modules",
+      "/scripts/sandbox*",
+      "/src/components",
+      "/src/gen",
+      "/src/lib"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

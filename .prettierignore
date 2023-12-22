@@ -5,3 +5,5 @@
 /.cache
 /.swc
 /src/gen
+/src/components
+/src/lib
